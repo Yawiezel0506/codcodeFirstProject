@@ -1,12 +1,14 @@
 // import { data } from "./data/data.js";
 
 // let renderData = JSON.parse(JSON.stringify(data));
+let renderData = []
 
 const fetchData = async () => {
   const resp = await fetch("https://agreeable-bee-veil.cyclic.cloud/api/products")
   const data = await resp.json()
   return data;
 }
+
 
 const mainContext = document.querySelector("#mainContext");
 const filterBtns = document.querySelectorAll(".filter");
@@ -631,7 +633,7 @@ const handleSearch = () => {
 };
 
 const init =  async() => {
-  const renderData = await fetchData()
+  renderData = await fetchData()
   render(renderData);
   controlFilters();
   controlNavIcons();
